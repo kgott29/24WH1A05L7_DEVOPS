@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechForge 2026 — Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap');
+
+        /* Editorial Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #0d0e12;
+            color: #f7f4ef;
+            font-family: 'DM Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* The Editorial Split-Card */
+        .aesthetic-card {
+            background: #14161d;
+            border: 1px solid rgba(247, 244, 239, 0.05);
+            border-radius: 32px;
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Left Split: Event Identity Poster */
+        .poster-sidebar {
+            background: linear-gradient(135deg, #1c1a27 0%, #111218 100%);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid rgba(247, 244, 239, 0.05);
+            position: relative;
+        }
+
+        /* Abstract Premium Geometric Touch */
+        .poster-sidebar::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            filter: blur(30px);
+        }
+
+        .brand-pill {
+            align-self: flex-start;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #d4af37; /* Soft gold accent */
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 500;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #f7f4ef;
+            margin: 40px 0 20px 0;
+        }
+
+        .main-title em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: #caa367;
+        }
+
+        .sidebar-footer {
+            font-size: 13px;
+            color: #8c8e99;
+            line-height: 1.6;
+        }
+
+        .sidebar-footer strong {
+            color: #f7f4ef;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Right Split: Form Dynamics */
+        .form-area {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Aesthetic Linear Stepper */
+        .step-timeline {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .timeline-node {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #4c4f5d;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #282a36;
+            flex: 1;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-node.active {
+            color: #f7f4ef;
+            border-bottom-color: #caa367;
+        }
+
+        /* Interactive Canvas Switcher */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: elegantReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #f7f4ef;
+        }
+
+        /* Grid Setup */
+        .grid-frame {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px 24px;
+        }
+
+        .span-all {
+            grid-column: span 2;
+        }
+
+        /* Deep-contrast Inputs */
+        .field-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-box label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8c8e99;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            background: #1a1d26;
+            border: 1px solid rgba(247, 244, 239, 0.08);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 14px;
+            color: #f7f4ef;
+            outline: none;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: #4c4f5d;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238c8e99' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        select option {
+            background: #14161d;
+            color: #f7f4ef;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #caa367;
+            background: #1d212c;
+            box-shadow: 0 0 20px rgba(202, 163, 103, 0.05);
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        /* Thoughtfully Balanced Buttons */
+        .action-tray {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+
+        button {
+            font-family: 'DM Sans', sans-serif;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+        }
+
+        .btn-forward {
+            background: #f7f4ef;
+            color: #0d0e12;
+            margin-left: auto;
+        }
+
+        .btn-forward:hover {
+            background: #caa367;
+            color: #0d0e12;
+            transform: translateY(-2px);
+        }
+
+        .btn-backward {
+            background: transparent;
+            color: #8c8e99;
+            border: 1px solid rgba(247, 244, 239, 0.1);
+        }
+
+        .btn-backward:hover {
+            color: #f7f4ef;
+            border-color: rgba(247, 244, 239, 0.3);
+        }
+
+        /* Success Interface Screen */
+        .success-display {
+            display: none;
+            text-align: center;
+            animation: elegantReveal 0.8s ease;
+        }
+
+        .success-display h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .success-display p {
+            color: #8c8e99;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .aesthetic-card { grid-template-columns: 1fr; }
+            .poster-sidebar { border-right: none; border-bottom: 1px solid rgba(247, 244, 239, 0.05); padding: 40px; }
+            .form-area { padding: 40px 24px; }
+        }
+
+        @media (max-width: 600px) {
+            .grid-frame { grid-template-columns: 1fr; }
+            .span-all { grid-column: span 1; }
+            .step-timeline { display: none; } /* Clean up view for tiny screens */
+        }
+
+        @keyframes elegantReveal {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="aesthetic-card">
+        
+        <!-- Left Structural Column: Context Poster Piece -->
+        <div class="poster-sidebar">
+            <span class="brand-pill">Summit Collective</span>
+            <div>
+                <h1 class="main-title">TechForge<br><em>2026</em></h1>
+            </div>
+            <div class="sidebar-footer">
+                <strong>Location & Schedule</strong>
+                San Francisco, CA Plaza<br>October 14 — 16, 2026
+            </div>
+        </div>
+
+        <!-- Right Structural Column: Form Canvas Core -->
+        <div class="form-area">
+            
+            <div class="step-timeline">
+                <div class="timeline-node active">01</div>
+                <div class="timeline-node">02</div>
+                <div class="timeline-node">03</div>
+                <div class="timeline-node">04</div>
+            </div>
+
+            <form id="artisticRegistrationForm">
+                
+                <!-- STEP 1: Personal Data Matrix -->
+                <div class="form-step active">
+                    <h2 class="step-title">Personal Metrics</h2>
+                    <div class="grid-frame">
+                        <div class="field-box">
+                            <label for="fName">First Name</label>
+                            <input type="text" id="fName" required placeholder="e.g. John">
+                        </div>
+                        <div class="field-box">
+                            <label for="lName">Last Name</label>
+                            <input type="text" id="lName" required placeholder="e.g. Doe">
+                        </div>
+                        <div class="field-box">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required placeholder="name@domain.com">
+                        </div>
+                        <div class="field-box">
+                            <label for="phone">Mobile Connection</label>
+                            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+                        </div>
+                        <div class="field-box">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                        <div class="field-box">
+                            <label for="gender">Gender Profile</label>
+                            <select id="gender" required>
+                                <option value="" disabled selected>Select...</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="action-tray">
+                        <button type="button" class="btn-forward" onclick="navigateStep(1)">Next Layer</button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Professional Details -->
+                <div class="form-step">
+                    <h2 class="step-title">Professional Profile</h2>
+                    <div class="grid-frame">
+                        <div class="field-box">
+                            <label for="company">Company / Hub</label>
+                            <input type="text" id="company" required placeholder="Organization name">
+                        </div>
+                        <div class="field-box">
+                            <label for="jobTitle">Job Assignment</label>
+                            <input type="text" id="jobTitle" required placeholder="Your current role">
+                        </div>
+                        <div class="field-box">
+                            <label for="industry">Industry Sector</label>
+                            <select id="industry" required>
+                                <option value="" disabled selected>Select Sector</option>
+                                <option value="tech">Technology & SaaS</option>
+                                <option value="finance">Finance & Banking</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="education">Education</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="experience">Years of Practice</label>
+                            <input type="text" id="experience" placeholder="e.g. 4">
+                        </div>
+                        <div class="field-box">
+                            <label for="linkedin">LinkedIn Verification</label>
+                            <input type="url" id="linkedin" placeholder="https://linkedin.com/in/..." required>
+                        </div>
+                        <div class="field-box">
+                            <label for="website">Digital Portfolio / URL</label>
+                            <input type="url" id="website" placeholder="https://...">
+                        </div>
+                    </div>
+                    <div class="action-tray">
+                        <button type="button" class="btn-backward" onclick="navigateStep(-1)">Return</button>
+                        <button type="button" class="btn-forward" onclick="navigateStep(1)">Next Layer</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Logistics & Preferences -->
+                <div class="form-step">
+                    <h2 class="step-title">Logistics & Placement</h2>
+                    <div class="grid-frame">
+                        <div class="field-box">
+                            <label for="attendance">Attendance Medium</label>
+                            <select id="attendance" required>
+                                <option value="in-person">In-Person Experience</option>
+                                <option value="virtual">Virtual Key Access</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="dietary">Dietary Preferences</label>
+                            <select id="dietary" required>
+                                <option value="none">No Restrictions</option>
+                                <option value="vegetarian">Vegetarian</option>
+                                <option value="vegan">Vegan</option>
+                                <option value="gluten-free">Gluten-Free</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="tshirt">T-Shirt Artifact Size</label>
+                            <select id="tshirt" required>
+                                <option value="S">Small (S)</option>
+                                <option value="M">Medium (M)</option>
+                                <option value="L">Large (L)</option>
+                                <option value="XL">Extra Large (XL)</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="stay">Hotel Quarters Request</label>
+                            <select id="stay" required>
+                                <option value="no">Independent Management</option>
+                                <option value="yes">Reserve Venue Blocks</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="arrivalDate">Arrival Projection</label>
+                            <input type="date" id="arrivalDate">
+                        </div>
+                        <div class="field-box">
+                            <label for="emergencyContact">Emergency Liaison Info</label>
+                            <input type="text" id="emergencyContact" placeholder="Name & Phone Contact" required>
+                        </div>
+                    </div>
+                    <div class="action-tray">
+                        <button type="button" class="btn-backward" onclick="navigateStep(-1)">Return</button>
+                        <button type="button" class="btn-forward" onclick="navigateStep(1)">Next Layer</button>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Event Options & Settings -->
+                <div class="form-step">
+                    <h2 class="step-title">Final Curation</h2>
+                    <div class="grid-frame">
+                        <div class="field-box">
+                            <label for="workshop">Masterclass Selection</label>
+                            <select id="workshop" required>
+                                <option value="w1">AI & Automation Engineering</option>
+                                <option value="w2">Advanced Market Frameworks</option>
+                                <option value="w3">Product Experience Design</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="dinner">Gala Networking Dinner</label>
+                            <select id="dinner" required>
+                                <option value="yes">Confirm Attendance</option>
+                                <option value="no">Decline Dinner</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="hearAbout">Discovery Vector</label>
+                            <select id="hearAbout" required>
+                                <option value="" disabled selected>Select platform</option>
+                                <option value="linkedin">LinkedIn Networks</option>
+                                <option value="newsletter">Curated Newsletter</option>
+                                <option value="word-of-mouth">Direct Recommendation</option>
+                                <option value="search">Search Engine Matrix</option>
+                                <option value="other">Alternative Channel</option>
+                            </select>
+                        </div>
+                        <div class="field-box">
+                            <label for="referralCode">Promotion / Token Access</label>
+                            <input type="text" id="referralCode" placeholder="Optional code">
+                        </div>
+                        <div class="field-box">
+                            <label for="accessibility">Accessibility Allocations</label>
+                            <input type="text" id="accessibility" placeholder="Specify requests">
+                        </div>
+                        <div class="field-box">
+                            <label for="badgeName">Badge Topography Name</label>
+                            <input type="text" id="badgeName" placeholder="Printed label moniker" required>
+                        </div>
+                        <div class="field-box span-all">
+                            <label for="specialNotes">Supplementary Manifest Ledger</label>
+                            <textarea id="specialNotes" placeholder="Any secondary contextual metadata statements..."></textarea>
+                        </div>
+                    </div>
+                    <div class="action-tray">
+                        <button type="button" class="btn-backward" onclick="navigateStep(-1)">Return</button>
+                        <button type="submit" class="btn-forward">Finalize Registry</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- Complete State View Structure Canvas -->
+            <div id="successView" class="success-display">
+                <h3>Registry Complete.</h3>
+                <p>Your comprehensive registration manifest has been validated and recorded.<br>Digital invitation signatures are routing to your inbox.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.form-step');
+        const indicators = document.querySelectorAll('.timeline-node');
+
+        function showStep(idx) {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === idx);
+            });
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === idx);
+            });
+        }
+
+        function navigateStep(direction) {
+            if (direction === 1) {
+                const activeInputs = steps[currentStep].querySelectorAll('input[required], select[required]');
+                let valid = true;
+                activeInputs.forEach(input => {
+                    if (!input.checkValidity()) {
+                        input.reportValidity();
+                        valid = false;
+                    }
+                });
+                if (!valid) return;
+            }
+
+            currentStep += direction;
+            showStep(currentStep);
+        }
+
+        document.getElementById('artisticRegistrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const elements = this.elements;
+            let capturedData = {};
+            
+            for(let i = 0 ; i < elements.length ; i++){
+                let item = elements[i];
+                if(item.id) {
+                    capturedData[item.id] = item.value;
+                }
+            }
+
+            console.log("Aesthetic Data Block Compiled:", capturedData);
+
+            document.getElementById('artisticRegistrationForm').style.display = 'none';
+            document.querySelector('.step-timeline').style.display = 'none';
+            document.getElementById('successView').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
