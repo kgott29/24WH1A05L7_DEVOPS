@@ -24,10 +24,10 @@ pipeline {
                 
                 // 2. Define stages to execute for every combination
                 stages {
-                    // FIX: Uses double quotes and dynamic variables to name each parallel node
-                    stage("${PLATFORM} - ${BROWSER}") {
+                    // FIX: Must use a plain, static string literal here to avoid syntax errors
+                    stage('Run Test') {
                         steps {
-                            echo "Testing on ${PLATFORM} using ${BROWSER}..."
+                            echo "Testing on ${env.PLATFORM} using ${env.BROWSER}..."
                         }
                     }
                 }
