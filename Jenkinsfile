@@ -24,7 +24,8 @@ pipeline {
                 
                 // 2. Define stages to execute for every combination
                 stages {
-                    stage('Executing Matrix Test') {
+                    // FIX: Uses double quotes and dynamic variables to name each parallel node
+                    stage("${PLATFORM} - ${BROWSER}") {
                         steps {
                             echo "Testing on ${PLATFORM} using ${BROWSER}..."
                         }
